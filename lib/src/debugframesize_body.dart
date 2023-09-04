@@ -60,11 +60,11 @@ class _DebugFrameSizeBodyState extends State<DebugFrameSizeBody> {
 
     Color color = style?.color ?? (
         Theme.of(context).colorScheme.error
-    ) ?? const Color(0xFFFF0000);
+    );
 
     Color negativeColor = style?.negativeColor ?? (
         Theme.of(context).colorScheme.onError
-    ) ?? const Color(0xFFFFFFFF);
+    );
 
     double thickness = style?.thickness ?? (
         Theme.of(context).textTheme.labelMedium?.decorationThickness
