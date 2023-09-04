@@ -1,5 +1,5 @@
 name: flutter_debugframesize
-description: Flutter debugframesize plugin.
+description: flutter_debugframesize is an library to support widget extension to debug frame sizes in app runtime. It may be your pixel-perfect design UI debugging companion.
 version: 1.0.0
 homepage:
 
