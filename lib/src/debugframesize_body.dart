@@ -58,25 +58,25 @@ class _DebugFrameSizeBodyState extends State<DebugFrameSizeBody> {
   @override
   Widget build(BuildContext context) {
 
-    Color _color = style?.color ?? (
-        context != null ? Theme.of(context).colorScheme.error : null
+    Color color = style?.color ?? (
+        Theme.of(context).colorScheme.error
     ) ?? const Color(0xFFFF0000);
 
-    Color _negativeColor = style?.negativeColor ?? (
-        context != null ? Theme.of(context).colorScheme.onError : null
+    Color negativeColor = style?.negativeColor ?? (
+        Theme.of(context).colorScheme.onError
     ) ?? const Color(0xFFFFFFFF);
 
-    double _thickness = style?.thickness ?? (
-        context != null ? Theme.of(context).textTheme.labelMedium?.decorationThickness : null
+    double thickness = style?.thickness ?? (
+        Theme.of(context).textTheme.labelMedium?.decorationThickness
     ) ?? 1.0;
 
-    List<double> _dashPattern = style?.dashPattern ?? [3, 3];
+    List<double> dashPattern = style?.dashPattern ?? [3, 3];
 
-    double _fontSize = style?.fontSize ?? (
-        context != null ? Theme.of(context).textTheme.labelMedium?.fontSize : null
+    double fontSize = style?.fontSize ?? (
+        Theme.of(context).textTheme.labelMedium?.fontSize
     ) ?? 12.0;
 
-    Alignment _alignment = style?.alignment ?? Alignment.topLeft;
+    Alignment alignment = style?.alignment ?? Alignment.topLeft;
 
     return LayoutBuilder(
         builder: (BuildContext context, BoxConstraints constraints) {
@@ -85,18 +85,18 @@ class _DebugFrameSizeBodyState extends State<DebugFrameSizeBody> {
           int iw = width.toInt();
           int ih = height.toInt();
           return DottedBorder(
-              color: _color,
-              strokeWidth: _thickness,
-              dashPattern: _dashPattern,
+              color: color,
+              strokeWidth: thickness,
+              dashPattern: dashPattern,
               child: Align(
-                  alignment: _alignment,
+                  alignment: alignment,
                   child: Container(
-                      color: _negativeColor.withOpacity(0.75),
+                      color: negativeColor.withOpacity(0.75),
                       child: Text(
                         "${iw}px x ${ih}px",
                         style: TextStyle(
-                            fontSize: _fontSize,
-                            color: _color
+                            fontSize: fontSize,
+                            color: color
                         ),
                       )
 
