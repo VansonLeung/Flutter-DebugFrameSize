@@ -26,26 +26,20 @@ part of '../flutter_debugframesize.dart';
 ///  ```
 ///
 extension StyledWidget on Widget {
-
   Widget copyWith({
     DebugFrameSizeBodyStyle? debugFrameSizeBodyStyle,
   }) {
-
-    return Stack(
-        children: [
-          this,
-          Positioned.fill(
-            child: Stack(
-             children: [
-               Positioned.fill(
-                 child: DebugFrameSizeBody(
-                   debugFrameSizeBodyStyle: debugFrameSizeBodyStyle,
-                 ),
-               ),
-             ]
-           )
+    return Stack(children: [
+      this,
+      Positioned.fill(
+          child: Stack(children: [
+        Positioned.fill(
+          child: DebugFrameSizeBody(
+            debugFrameSizeBodyStyle: debugFrameSizeBodyStyle,
           ),
-        ]);
+        ),
+      ])),
+    ]);
   }
 
   Widget debugFrameSize({
@@ -56,16 +50,15 @@ extension StyledWidget on Widget {
     }
 
     return ValueListenableBuilder(
-      valueListenable: FlutterDebugFrameSizeConstants.isEnabled,
-      builder: (context, bool value, child) {
-        if (!value) {
-          return this;
-        }
+        valueListenable: FlutterDebugFrameSizeConstants.isEnabled,
+        builder: (context, bool value, child) {
+          if (!value) {
+            return this;
+          }
 
-        return copyWith(
-          debugFrameSizeBodyStyle: debugFrameSizeBodyStyle,
-        );
-      }
-    );
+          return copyWith(
+            debugFrameSizeBodyStyle: debugFrameSizeBodyStyle,
+          );
+        });
   }
 }

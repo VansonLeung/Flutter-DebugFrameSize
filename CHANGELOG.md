@@ -1,3 +1,7 @@
+## 1.0.0+3
+
+* dart format .
+
 ## 1.0.0+2
 
 * Added toggle logic to cater dev / prod environments

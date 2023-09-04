@@ -33,7 +33,8 @@ class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
 
   void _toggleDebug() {
-    FlutterDebugFrameSizeConstants.isEnabled.value = !FlutterDebugFrameSizeConstants.isEnabled.value;
+    FlutterDebugFrameSizeConstants.isEnabled.value =
+        !FlutterDebugFrameSizeConstants.isEnabled.value;
   }
 
   void _incrementCounter() {
@@ -65,7 +66,8 @@ class _MyHomePageState extends State<MyHomePage> {
 
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 40),
-              child: const SizedBox(width: double.infinity, height: 20).debugFrameSize(),
+              child: const SizedBox(width: double.infinity, height: 20)
+                  .debugFrameSize(),
             ),
 
             const SizedBox(width: 280, height: 20).debugFrameSize(),
@@ -75,37 +77,40 @@ class _MyHomePageState extends State<MyHomePage> {
 
             // customizable styles of `.debugFrameSize()` with `DebugFrameSizeBodyStyle`
             Image.network(
-                'https://docs.flutter.dev/assets/images/dash/dash-fainting.gif')
+                    'https://docs.flutter.dev/assets/images/dash/dash-fainting.gif')
                 .debugFrameSize(
-                  debugFrameSizeBodyStyle: const DebugFrameSizeBodyStyle(
-                    color: Color(0xFF00cc00),
-                    fontSize: 20,
-                    thickness: 4,
-                    dashPattern: [10, 10],
-                  ),
-                ),
-
+              debugFrameSizeBodyStyle: const DebugFrameSizeBodyStyle(
+                color: Color(0xFF00cc00),
+                fontSize: 20,
+                thickness: 4,
+                dashPattern: [10, 10],
+              ),
+            ),
           ],
         ),
       ),
-      floatingActionButton: Align(alignment: Alignment.bottomRight, child: Column(
-        children: <Widget>[
-          const Spacer(),
-          ValueListenableBuilder(valueListenable: FlutterDebugFrameSizeConstants.isEnabled, builder: (_, bool value, child) {
-            return FloatingActionButton(
-              onPressed: _toggleDebug,
-              tooltip: 'Toggle Debug',
-              child: Icon( value ? Icons.toggle_on : Icons.toggle_off),
-            );
-          }),
-          const SizedBox(height: 20),
-          FloatingActionButton(
-            onPressed: _incrementCounter,
-            tooltip: 'Increment',
-            child: const Icon(Icons.add).debugFrameSize(),
-          ),
-        ],
-      ),
+      floatingActionButton: Align(
+        alignment: Alignment.bottomRight,
+        child: Column(
+          children: <Widget>[
+            const Spacer(),
+            ValueListenableBuilder(
+                valueListenable: FlutterDebugFrameSizeConstants.isEnabled,
+                builder: (_, bool value, child) {
+                  return FloatingActionButton(
+                    onPressed: _toggleDebug,
+                    tooltip: 'Toggle Debug',
+                    child: Icon(value ? Icons.toggle_on : Icons.toggle_off),
+                  );
+                }),
+            const SizedBox(height: 20),
+            FloatingActionButton(
+              onPressed: _incrementCounter,
+              tooltip: 'Increment',
+              child: const Icon(Icons.add).debugFrameSize(),
+            ),
+          ],
+        ),
       ),
     );
   }

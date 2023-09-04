@@ -27,13 +27,11 @@ class DebugFrameSizeBodyStyle {
   });
 }
 
-
 /// DebugFrameSizeBody
 ///
 ///  - DebugFrameSizeBodyStyle? `debugFrameSizeBodyStyle`: body style of debugFrameSize
 ///
 class DebugFrameSizeBody extends StatefulWidget {
-
   final DebugFrameSizeBodyStyle? debugFrameSizeBodyStyle;
 
   const DebugFrameSizeBody({
@@ -46,7 +44,6 @@ class DebugFrameSizeBody extends StatefulWidget {
 }
 
 class _DebugFrameSizeBodyState extends State<DebugFrameSizeBody> {
-
   DebugFrameSizeBodyStyle? style;
 
   @override
@@ -57,54 +54,41 @@ class _DebugFrameSizeBodyState extends State<DebugFrameSizeBody> {
 
   @override
   Widget build(BuildContext context) {
+    Color color = style?.color ?? (Theme.of(context).colorScheme.error);
 
-    Color color = style?.color ?? (
-        Theme.of(context).colorScheme.error
-    );
+    Color negativeColor =
+        style?.negativeColor ?? (Theme.of(context).colorScheme.onError);
 
-    Color negativeColor = style?.negativeColor ?? (
-        Theme.of(context).colorScheme.onError
-    );
-
-    double thickness = style?.thickness ?? (
-        Theme.of(context).textTheme.labelMedium?.decorationThickness
-    ) ?? 1.0;
+    double thickness = style?.thickness ??
+        (Theme.of(context).textTheme.labelMedium?.decorationThickness) ??
+        1.0;
 
     List<double> dashPattern = style?.dashPattern ?? [3, 3];
 
-    double fontSize = style?.fontSize ?? (
-        Theme.of(context).textTheme.labelMedium?.fontSize
-    ) ?? 12.0;
+    double fontSize = style?.fontSize ??
+        (Theme.of(context).textTheme.labelMedium?.fontSize) ??
+        12.0;
 
     Alignment alignment = style?.alignment ?? Alignment.topLeft;
 
     return LayoutBuilder(
         builder: (BuildContext context, BoxConstraints constraints) {
-          double width = constraints.maxWidth;
-          double height = constraints.maxHeight;
-          int iw = width.toInt();
-          int ih = height.toInt();
-          return DottedBorder(
-              color: color,
-              strokeWidth: thickness,
-              dashPattern: dashPattern,
-              child: Align(
-                  alignment: alignment,
-                  child: Container(
-                      color: negativeColor.withOpacity(0.75),
-                      child: Text(
-                        "${iw}px x ${ih}px",
-                        style: TextStyle(
-                            fontSize: fontSize,
-                            color: color
-                        ),
-                      )
-
-                  )
-              )
-          );
-        }
-    );
+      double width = constraints.maxWidth;
+      double height = constraints.maxHeight;
+      int iw = width.toInt();
+      int ih = height.toInt();
+      return DottedBorder(
+          color: color,
+          strokeWidth: thickness,
+          dashPattern: dashPattern,
+          child: Align(
+              alignment: alignment,
+              child: Container(
+                  color: negativeColor.withOpacity(0.75),
+                  child: Text(
+                    "${iw}px x ${ih}px",
+                    style: TextStyle(fontSize: fontSize, color: color),
+                  ))));
+    });
   }
-
 }
