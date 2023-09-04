@@ -3,6 +3,7 @@
 ## Features
 
 Show frame sizes for your specific widgets on screen.
+![Screenshot_20230904_170028](https://github.com/VansonLeung/Flutter-DebugFrameSize/assets/1129695/91801e08-cc2d-4819-bbc7-912984406a34)
 
 ## Getting started
 
