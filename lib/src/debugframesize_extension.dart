@@ -51,8 +51,21 @@ extension StyledWidget on Widget {
   Widget debugFrameSize({
     DebugFrameSizeBodyStyle? debugFrameSizeBodyStyle,
   }) {
-    return copyWith(
-      debugFrameSizeBodyStyle: debugFrameSizeBodyStyle,
+    if (FlutterDebugFrameSizeConstants.isNeverEnabled) {
+      return this;
+    }
+
+    return ValueListenableBuilder(
+      valueListenable: FlutterDebugFrameSizeConstants.isEnabled,
+      builder: (context, bool value, child) {
+        if (!value) {
+          return this;
+        }
+
+        return copyWith(
+          debugFrameSizeBodyStyle: debugFrameSizeBodyStyle,
+        );
+      }
     );
   }
 }

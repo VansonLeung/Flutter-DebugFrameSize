@@ -31,6 +31,27 @@ void main() {
             m *= 2;
             await xtap(tester, fab, () {  expect(find.text("${m}"), findsOneWidget);  });
           }
+
+
+          // Finds the floating action button to tap on.
+          final Finder ftd = find.byTooltip('Toggle Debug');
+          await xtap(tester, ftd, null);
+
+
+          expect(find.text('280px x 20px'), findsNothing);
+          expect(find.text('240px x 20px'), findsNothing);
+          expect(find.text('130px x 20px'), findsNothing);
+          expect(find.text('30px x 60px'), findsNothing);
+          expect(find.text('3 x 3'), findsNothing);
+
+          await xtap(tester, ftd, null);
+
+
+          expect(find.text('280px x 20px'), findsOneWidget);
+          expect(find.text('240px x 20px'), findsOneWidget);
+          expect(find.text('130px x 20px'), findsOneWidget);
+          expect(find.text('30px x 60px'), findsOneWidget);
+          expect(find.text('3 x 3'), findsNothing);
         });
   });
 }

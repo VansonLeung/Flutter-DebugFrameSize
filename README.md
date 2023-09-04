@@ -9,6 +9,27 @@ Show frame sizes for your specific widgets on screen.
 
 Add to pubspec.yaml: `flutter_debugframesize: ^1.0.0`
 
+
+## Run this code before you render any widget to force disable it for production environment
+```
+// default
+FlutterDebugFrameSizeConstants.isNeverEnabled = kReleaseMode;
+
+// disable for all envs
+FlutterDebugFrameSizeConstants.isNeverEnabled = true;
+
+// enable for all envs
+FlutterDebugFrameSizeConstants.isNeverEnabled = false;
+```
+
+
+## How to runtime toggle it
+```
+FlutterDebugFrameSizeConstants.isEnabled.value = !FlutterDebugFrameSizeConstants.isEnabled.value;
+```
+
+
+
 ## Usage
 
 Refer to `/example`

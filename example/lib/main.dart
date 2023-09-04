@@ -32,6 +32,10 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
 
+  void _toggleDebug() {
+    FlutterDebugFrameSizeConstants.isEnabled.value = !FlutterDebugFrameSizeConstants.isEnabled.value;
+  }
+
   void _incrementCounter() {
     setState(() {
       _counter = _counter <= 0 ? 1 : _counter;
@@ -84,10 +88,24 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add).debugFrameSize(),
+      floatingActionButton: Align(alignment: Alignment.bottomRight, child: Column(
+        children: <Widget>[
+          const Spacer(),
+          ValueListenableBuilder(valueListenable: FlutterDebugFrameSizeConstants.isEnabled, builder: (_, bool value, child) {
+            return FloatingActionButton(
+              onPressed: _toggleDebug,
+              tooltip: 'Toggle Debug',
+              child: Icon( value ? Icons.toggle_on : Icons.toggle_off),
+            );
+          }),
+          const SizedBox(height: 20),
+          FloatingActionButton(
+            onPressed: _incrementCounter,
+            tooltip: 'Increment',
+            child: const Icon(Icons.add).debugFrameSize(),
+          ),
+        ],
+      ),
       ),
     );
   }
