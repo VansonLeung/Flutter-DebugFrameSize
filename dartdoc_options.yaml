@@ -1,0 +1,4 @@
+dartdoc:
+  nodoc: [
+    'example/*'
+  ]
