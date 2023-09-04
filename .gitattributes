@@ -3,3 +3,4 @@
 *.cmake linguist-detectable=false
 *.cc linguist-detectable=false
 *.h linguist-detectable=false
+CMakeLists.txt linguist-detectable=false
